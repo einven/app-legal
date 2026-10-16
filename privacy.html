@@ -14,6 +14,11 @@
     h2 { margin-top: 2rem; font-size: 1.2rem; line-height: 1.5; }
     a { color: #185abd; text-underline-offset: 3px; }
     li { margin: .45rem 0; }
+    [hidden] { display: none !important; }
+    .languages { display: flex; gap: 16px; margin-bottom: 24px; }
+    .languages a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 1px solid currentColor; border-radius: 6px; }
+    .languages a[aria-current="true"] { font-weight: 700; text-decoration-thickness: 2px; }
+    .languages a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
     .meta { color: #555; }
     .draft { border: 1px solid #a66b00; border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; background: #fff8e8; }
     .draft h2 { margin-top: 0; }
@@ -21,7 +26,12 @@
     footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #bbb; font-size: .9rem; }
     @media (prefers-color-scheme: dark) {
       body { background: #171717; color: #eee; }
-      .meta { color: #bbb; }
+      [hidden] { display: none !important; }
+    .languages { display: flex; gap: 16px; margin-bottom: 24px; }
+    .languages a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 1px solid currentColor; border-radius: 6px; }
+    .languages a[aria-current="true"] { font-weight: 700; text-decoration-thickness: 2px; }
+    .languages a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+    .meta { color: #bbb; }
       a { color: #9ac3ff; }
       .draft { background: #302711; border-color: #cda64e; }
     }
@@ -30,7 +40,12 @@
 </head>
 <body>
 <main>
-  <!-- 发布前：完成以下定稿事项，再删除整个 draft 区块。 -->
+  <nav class="languages" aria-label="Language / 语言">
+    <a href="#policy-zh" data-language="zh" lang="zh-Hans" hreflang="zh-Hans" aria-controls="policy-zh">简体中文</a>
+    <a href="#policy-en" data-language="en" lang="en" hreflang="en" aria-controls="policy-en">English</a>
+  </nav>
+  <article id="policy-zh" lang="zh-Hans">
+  <!-- 发布前：完成以下定稿事项，再删除中英文两个 draft 区块。 -->
   <aside class="draft" aria-label="草稿定稿说明">
     <h2>待定稿模板 · 尚未生效</h2>
     <p>本文件根据 2026 年 10 月 16 日的本地版代码准备，可用于 GitHub Pages 页面预览，暂不能作为正式上架政策。</p>
@@ -39,7 +54,7 @@
       <li>确认产品最终名称；本稿使用 Quote Assistant（AI 报价单助手）。</li>
       <li>法律复核事项：根据开发者所在地和发行地区，确认主体地址、适用法律、处理依据、用户权利及跨境处理披露要求。本稿不代表已满足任何特定地区的全部要求。</li>
       <li>核对实际发布版本及服务商。如启用真实反馈提交、登录、AI 上传、云同步、统计或广告服务，应先更新相应条款。</li>
-      <li>定稿后删除此说明框；如希望搜索引擎收录，可同时删除 HTML 头部的 noindex 标签。</li>
+      <li>定稿后删除中英文两个说明框；如希望搜索引擎收录，可同时删除 HTML 头部的 noindex 标签。</li>
     </ol>
     <p>本文是产品隐私披露草稿，不构成法律意见；正式发布前请结合实际发行地区进行专业法律复核。</p>
   </aside>
@@ -138,6 +153,123 @@
   </section>
 
   <footer>Quote Assistant · AI 报价单助手</footer>
+  </article>
+  <article id="policy-en" lang="en">
+  <aside class="draft" aria-label="Draft publication notes">
+    <h2>Draft template · Not yet effective</h2>
+    <p>Prepared from the local app code as of October 16, 2026. This page is for preview and is not a finalized policy for App Store submission.</p>
+    <ol>
+      <li>Replace all occurrences of <strong>【开发者真实姓名】 (developer’s legal name)</strong>, <strong>【隐私联系邮箱】 (privacy contact email)</strong>, and <strong>【生效日期】 (effective date)</strong> in both languages.</li>
+      <li>Confirm the final product name. This draft uses Quote Assistant (AI 报价单助手).</li>
+      <li>Legal review: confirm identity and address disclosures, applicable laws, processing grounds, user rights, and international processing requirements for the developer’s location and distribution territories. This draft does not establish compliance with any jurisdiction’s full requirements.</li>
+      <li>Check the release build and actual providers. Update this policy before enabling real feedback submissions, sign-in, AI uploads, cloud sync, analytics, or advertising.</li>
+      <li>Remove both draft notice boxes when finalized. You may also remove the noindex meta tag if search engine indexing is desired.</li>
+    </ol>
+    <p>This is a product privacy disclosure draft, not legal advice. Obtain professional legal review for the actual distribution territories before publication.</p>
+  </aside>
+  <header>
+    <h1>Quote Assistant Privacy Policy</h1>
+    <p class="meta">Product: Quote Assistant (AI 报价单助手)<br>
+      Effective date: <span class="placeholder">【生效日期】</span><br>
+      Developer: <span class="placeholder">【开发者真实姓名】</span><br>
+      Privacy contact email: <span class="placeholder">【隐私联系邮箱】</span></p>
+  </header>
+  <section aria-labelledby="summary-en">
+    <h2 id="summary-en">Policy summary</h2>
+    <p>The app helps you create and manage quotations, maintain business records, and export documents. In the current local version, quotations and business records are primarily stored on your device. Registration is not required, AI cloud processing and in-app cloud sync are not enabled, and the app does not integrate advertising or third-party behavioral tracking services. Files you choose to share, Apple purchases, and external services involved in viewing this policy are described below.</p>
+  </section>
+  <section>
+    <h2>1. Scope and responsible developer</h2>
+    <p>This policy explains how <span class="placeholder">【开发者真实姓名】</span> (“we,” “us,” or “our”) handles information when providing Quote Assistant. It covers the current local version and privacy communications sent directly to us. Third-party websites you open, Apple services, and other apps that receive your exports are also subject to their respective privacy policies.</p>
+  </section>
+  <section>
+    <h2>2. Information processed on your device</h2>
+    <p>Depending on the features you use, the app may store the following information that you enter or select:</p>
+    <ul>
+      <li>Quotations: numbers, dates, customer details, product or service line items, prices, taxes, discounts, payment terms, notes, statuses, and historical versions.</li>
+      <li>Library records: customer names, companies, contact details, addresses, product information, and reusable quotation terms.</li>
+      <li>Business profile: business name, address, contact details, tax identifiers, and logos, signatures, or other branding images you select.</li>
+      <li>Preferences and feature status: language, theme, haptic feedback, export settings, and purchase entitlement status.</li>
+    </ul>
+    <p>This information is used to save and edit records, calculate quotation amounts, generate documents, and restore your preferences. The current local version does not automatically upload your quotations, customer records, or business profile to developer-operated servers.</p>
+    <p>If you enter personal information about customers or others, ensure that you have appropriate authorization and include only what your business task requires.</p>
+  </section>
+  <section>
+    <h2>3. Images and device permissions</h2>
+    <p>For image-related features, the app can read images you explicitly select using the system picker for the relevant branding or page feature. Selecting an image does not authorize access to your entire photo library. You may decline or cancel selection and manage permissions actually requested by the app in system settings; the corresponding feature may then be unavailable.</p>
+    <p>The current local version does not collect your precise location or device contacts for quotation management.</p>
+  </section>
+  <section>
+    <h2>4. Exporting, saving, and sharing</h2>
+    <p>The app can generate PDF or Excel files on your device and prepare sharing copies in its temporary directory. Files are handed to an app, storage service, or recipient only after you choose a saving or sharing destination.</p>
+    <p>Exports may contain customer contact details, prices, and other business information. Review them before sharing. Copies saved elsewhere are managed by you and the relevant service and are not automatically deleted when you delete records in the app.</p>
+  </section>
+  <section>
+    <h2>5. Apple purchases and system services</h2>
+    <p>If you use available in-app purchase or restore-purchase features, Apple’s App Store handles payment and transactions. The app uses StoreKit product, transaction, and entitlement information to determine available features. We do not obtain your full payment card number or Apple Account password through the app.</p>
+    <p>Apple may process purchase information, system diagnostics, and device backups according to your settings. Backups may contain local app data. The absence of an independently enabled in-app cloud sync service does not mean system backups are disabled. See <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a> and your device settings for details.</p>
+  </section>
+  <section>
+    <h2>6. Sign-in, AI, cloud features, and feedback</h2>
+    <p>The local version covered by this policy does not enable account sign-in, AI import, or in-app cloud services by default and does not send quotation content to AI providers for processing. If these features become available, we will explain the relevant information categories, purposes, recipients, retention arrangements, and required authorization before enabling them.</p>
+    <p>In-app feedback submission in the current version is simulated and does not actually send feedback or attachments to the developer. Please contact us using the email address in this policy. If you email us, we receive your email address, message, and any attachments to respond to questions, address problems, or handle privacy requests. Avoid sending unnecessary sensitive information. Email providers also process communications under their own service and privacy rules.</p>
+  </section>
+  <section>
+    <h2>7. Advertising, tracking, and this policy page</h2>
+    <p>The current local version does not integrate advertising SDKs or third-party behavioral analytics SDKs, track you across apps for advertising, or sell your personal information or share it for cross-context behavioral advertising.</p>
+    <p>This policy page does not use analytics scripts, advertising scripts, external fonts, or tracking cookies that we set. When hosted on GitHub Pages, GitHub processes access-related information, including IP addresses, to provide and secure its hosting service. Website hosting is separate from local storage in the app. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s Privacy Statement</a> for details.</p>
+  </section>
+  <section>
+    <h2>8. Retention and deletion</h2>
+    <p>Quotations and business records generally remain on your device until you delete the relevant records, use Settings → Clear Local Data, or delete the app and its data through the system. Clear Local Data removes quotations, related history, library records, and business branding on that device while keeping app preferences. It does not delete files exported elsewhere, system backups, or Apple transaction records, and it does not cancel subscriptions.</p>
+    <p>Temporary export files may remain until the system clears temporary storage or app data is deleted. Manage backups and third-party copies through the respective services.</p>
+    <p>Support communications you send directly to us are kept only as needed to address the issue, subsequent disputes, or applicable legal obligations, and deleted when no longer needed. You may request deletion using the email address below.</p>
+  </section>
+  <section>
+    <h2>9. Your choices and rights</h2>
+    <p>You can view, update, or delete supported records in the app, export quotation files, and manage device permissions and backup settings. We cannot remotely access or restore quotation records stored only on your device. Exporting a quotation document is not equivalent to backing up the entire database.</p>
+    <p>Depending on applicable law, you may also have rights to access, correct, delete, restrict processing, object to processing, obtain data portability, withdraw consent, or complain to a supervisory authority. For information we actually hold, contact our privacy email. We will verify and handle requests under applicable law and will not treat you unfairly for exercising your legal rights.</p>
+  </section>
+  <section>
+    <h2>10. Security and international processing</h2>
+    <p>The app uses iOS app storage and system capabilities to keep local records. Protect your device credentials, keep your system updated, and choose recipients of exported files carefully. No device or transmission method can guarantee absolute security.</p>
+    <p>We do not currently upload local quotation records to developer-operated servers, domestically or abroad. Apple services, email services, GitHub Pages, or sharing destinations you choose may process information outside your country or region, as described in their respective disclosures.</p>
+  </section>
+  <section>
+    <h2>11. Children’s privacy</h2>
+    <p>The app is a business quotation tool and is not specifically designed for children. We do not knowingly collect children’s personal information through support communications. If you believe a child has provided such information to us, contact us so we can investigate and take appropriate action.</p>
+  </section>
+  <section>
+    <h2>12. Changes and contact</h2>
+    <p>We will update this policy and its effective date when features or information practices change. For new uploads, third-party processing, or other material changes, we will provide notice as required by applicable law and obtain authorization where necessary.</p>
+    <p>For privacy questions or rights requests, contact:</p>
+    <p>Developer: <span class="placeholder">【开发者真实姓名】</span><br>
+      Email: <span class="placeholder">【隐私联系邮箱】</span></p>
+  </section>
+  <footer>Quote Assistant · AI 报价单助手</footer>
+  </article>
 </main>
+<script>
+  // Page-only language selection: no cookies, storage, or network requests.
+  (() => {
+    const links = Array.from(document.querySelectorAll('.languages a'));
+    const policies = { zh: document.getElementById('policy-zh'), en: document.getElementById('policy-en') };
+    function showLanguage() {
+      const requested = location.hash.replace(/^#(?:policy-)?/, '');
+      const language = requested === 'zh' || requested === 'en'
+        ? requested
+        : (/^zh(?:-|$)/i.test(navigator.language || 'en') ? 'zh' : 'en');
+      Object.entries(policies).forEach(([key, article]) => { article.hidden = key !== language; });
+      links.forEach(link => {
+        if (link.dataset.language === language) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+      document.documentElement.lang = language === 'zh' ? 'zh-Hans' : 'en';
+      document.title = language === 'zh' ? 'Quote Assistant 隐私政策' : 'Quote Assistant Privacy Policy';
+    }
+    window.addEventListener('hashchange', showLanguage);
+    showLanguage();
+  })();
+</script>
 </body>
 </html>
