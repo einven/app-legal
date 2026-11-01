@@ -1,274 +1,429 @@
-<!doctype html>
-<html lang="zh-Hans">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Quote Assistant（AI 报价单助手）隐私政策。">
-  <meta name="robots" content="noindex">
-  <title>Quote Assistant 隐私政策</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.85; color: #222; background: #fff; }
-    main { max-width: 780px; margin: 0 auto; padding: 40px 24px 64px; overflow-wrap: anywhere; }
-    h1 { font-size: 1.9rem; line-height: 1.3; }
-    h2 { margin-top: 2rem; font-size: 1.2rem; line-height: 1.5; }
-    a { color: #185abd; text-underline-offset: 3px; }
-    li { margin: .45rem 0; }
-    [hidden] { display: none !important; }
-    .languages { display: flex; gap: 16px; margin-bottom: 24px; }
-    .languages a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 1px solid currentColor; border-radius: 6px; }
-    .languages a[aria-current="true"] { font-weight: 700; text-decoration-thickness: 2px; }
-    .languages a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
-    .meta { color: #555; }
-    .draft { border: 1px solid #a66b00; border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; background: #fff8e8; }
-    .draft h2 { margin-top: 0; }
-    .placeholder { font-weight: 600; }
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #bbb; font-size: .9rem; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #171717; color: #eee; }
-      [hidden] { display: none !important; }
-    .languages { display: flex; gap: 16px; margin-bottom: 24px; }
-    .languages a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 1px solid currentColor; border-radius: 6px; }
-    .languages a[aria-current="true"] { font-weight: 700; text-decoration-thickness: 2px; }
-    .languages a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
-    .meta { color: #bbb; }
-      a { color: #9ac3ff; }
-      .draft { background: #302711; border-color: #cda64e; }
-    }
-    @media print { .draft { display: none; } main { padding: 0; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  使用说明：全局替换以下 3 个参数后即可上线（推荐用编辑器的"全部替换"）：
+  董宇卓  开发者名称（与 App Store 开发者账号/卖家名称保持一致）
+  {{CONTACT_EMAIL}}   联系邮箱（建议使用专用的对外邮箱）
+  {{EFFECTIVE_DATE}}  生效日期（建议格式 YYYY-MM-DD，如 2026-11-20，三种语言通用）
+-->
+<title>Quote Assistant · Privacy Policy / 隐私政策 / นโยบายความเป็นส่วนตัว</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", "Thonburi", "Microsoft YaHei", sans-serif;
+    background: #f5f6f8; color: #1f2329; line-height: 1.85; padding: 24px 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  .container { max-width: 760px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .lang-bar { display: flex; gap: 8px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
+  .lang-btn {
+    border: 1px solid #d7dbe2; background: #fff; color: #4b5563; font-size: 14px;
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: all .15s ease; line-height: 1.4;
+  }
+  .lang-btn:hover { border-color: #3b6fe0; color: #3b6fe0; }
+  .lang-btn.active { background: #3b6fe0; border-color: #3b6fe0; color: #fff; }
+  h1 { font-size: 24px; margin-bottom: 8px; letter-spacing: .2px; }
+  .meta { color: #6b7280; font-size: 14px; margin-bottom: 24px; }
+  .summary { background: #eef4ff; border-left: 4px solid #3b6fe0; border-radius: 8px; padding: 14px 16px; font-size: 15px; margin-bottom: 24px; }
+  h2 { font-size: 18px; margin: 30px 0 10px; padding-top: 6px; }
+  p, li { font-size: 15px; margin-bottom: 8px; }
+  ul { padding-left: 22px; margin-bottom: 10px; }
+  ol { padding-left: 22px; margin-bottom: 10px; }
+  strong { color: #111827; }
+  .footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 13px; color: #9ca3af; text-align: center; }
+  .lang { display: none; }
+  @media print { .lang-bar { display: none; } body { background: #fff; padding: 0; } .container { box-shadow: none; } }
+</style>
 </head>
 <body>
-<main>
-  <nav class="languages" aria-label="Language / 语言">
-    <a href="#policy-zh" data-language="zh" lang="zh-Hans" hreflang="zh-Hans" aria-controls="policy-zh">简体中文</a>
-    <a href="#policy-en" data-language="en" lang="en" hreflang="en" aria-controls="policy-en">English</a>
-  </nav>
-  <article id="policy-zh" lang="zh-Hans">
-  <!-- 发布前：完成以下定稿事项，再删除中英文两个 draft 区块。 -->
-  <aside class="draft" aria-label="草稿定稿说明">
-    <h2>待定稿模板 · 尚未生效</h2>
-    <p>本文件根据 2026 年 10 月 16 日的本地版代码准备，可用于 GitHub Pages 页面预览，暂不能作为正式上架政策。</p>
-    <ol>
-      <li>替换全文的 <strong>【开发者真实姓名】</strong>、<strong>【隐私联系邮箱】</strong>、<strong>【生效日期】</strong>。</li>
-      <li>确认产品最终名称；本稿使用 Quote Assistant（AI 报价单助手）。</li>
-      <li>法律复核事项：根据开发者所在地和发行地区，确认主体地址、适用法律、处理依据、用户权利及跨境处理披露要求。本稿不代表已满足任何特定地区的全部要求。</li>
-      <li>核对实际发布版本及服务商。如启用真实反馈提交、登录、AI 上传、云同步、统计或广告服务，应先更新相应条款。</li>
-      <li>定稿后删除中英文两个说明框；如希望搜索引擎收录，可同时删除 HTML 头部的 noindex 标签。</li>
-    </ol>
-    <p>本文是产品隐私披露草稿，不构成法律意见；正式发布前请结合实际发行地区进行专业法律复核。</p>
-  </aside>
+<div class="container">
 
-  <header>
-    <h1>Quote Assistant 隐私政策</h1>
-    <p class="meta">适用产品：Quote Assistant（AI 报价单助手）<br>
-      生效日期：<span class="placeholder">【生效日期】</span><br>
-      开发者：<span class="placeholder">【开发者真实姓名】</span><br>
-      隐私联系邮箱：<span class="placeholder">【隐私联系邮箱】</span></p>
-  </header>
+  <div class="lang-bar">
+    <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">简体中文</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">English</button>
+    <button class="lang-btn" data-lang="th" onclick="setLang('th')">ไทย</button>
+  </div>
 
-  <section aria-labelledby="summary">
-    <h2 id="summary">政策摘要</h2>
-    <p>本应用用于创建和管理报价单、维护业务资料并导出文件。当前本地版的报价及资料主要保存在你的设备上，不要求注册账号，不提供已启用的 AI 云端处理或应用内云同步，也不集成广告或第三方行为追踪服务。你主动分享的文件、Apple 内购，以及访问本政策网页涉及的外部服务，分别按下文说明处理。</p>
-  </section>
+  <!-- ==================== 简体中文 ==================== -->
+  <div class="lang" id="content-zh">
+    <h1>隐私政策</h1>
+    <p class="meta">应用名称：报价助手（Quote Assistant）<br>开发者：董宇卓<br>版本：v1.0 &nbsp;·&nbsp; 生效日期：{{EFFECTIVE_DATE}}</p>
 
-  <section>
-    <h2>1. 适用范围与责任主体</h2>
-    <p>本政策说明 <span class="placeholder">【开发者真实姓名】</span>（以下简称“我们”）在提供 Quote Assistant 时如何处理信息。它适用于当前本地版应用及与我们的直接隐私联系。你主动打开的第三方网站、Apple 服务及接收导出文件的其他应用，也受其各自的隐私政策约束。</p>
-  </section>
+    <div class="summary">
+      <strong>核心承诺：</strong>本应用无账号注册、无登录、不连接任何云端服务器。您创建的全部数据仅保存在<strong>您自己的设备</strong>上，本地处理、本地存储。我们不上传、不收集、不跟踪您的任何数据。
+    </div>
 
-  <section>
-    <h2>2. 应用在设备上处理的信息</h2>
-    <p>根据你实际使用的功能，应用可能在设备上保存以下由你输入或选择的信息：</p>
+    <h2>一、引言</h2>
+    <p>报价助手（Quote Assistant）是一款本地优先（Local-first）的报价单制作工具，帮助您在设备上创建、管理报价单并导出 PDF / Excel 文件。我们高度重视您的个人信息与隐私。</p>
+    <p>本政策适用于报价助手 iOS 客户端的全部功能。本政策按照适用法律法规（包括《中华人民共和国个人信息保护法》等个人信息保护相关法律）的精神制定。由于本应用不收集任何个人信息，实质意义上的个人数据处理已被限制在您的设备本地，风险已降至最低。</p>
+    <p>请仔细阅读本政策，尤其是加粗内容。您开始使用本应用，即表示已阅读并理解本政策。</p>
+
+    <h2>二、重要承诺</h2>
     <ul>
-      <li>报价单：编号、日期、客户资料、商品或服务明细、价格、税费、折扣、付款条件、备注、状态及历史版本。</li>
-      <li>资料库：客户姓名、公司、联系方式、地址、商品资料和可复用的报价条款。</li>
-      <li>企业资料：企业名称、地址、联系方式、税务标识及你选择的标志、签名或其他品牌图片。</li>
-      <li>偏好与功能状态：语言、主题、触觉反馈、导出设置及购买权益状态。</li>
+      <li><strong>不提供账号体系：</strong>无注册、无登录、无第三方登录；</li>
+      <li><strong>不连接云端服务器：</strong>我们不运营与您数据相关的任何服务器，无云同步、无云端备份；</li>
+      <li><strong>不上传任何数据：</strong>您的报价、客户、商品、企业资料、图片与设置均不出现在设备之外（唯一例外见第七节：由 Apple 处理的应用内购买流程）；</li>
+      <li><strong>不进行跟踪：</strong>无广告、无跨应用跟踪、无设备指纹；</li>
+      <li><strong>不接入统计或埋点 SDK：</strong>我们无法得知您如何使用本应用，也无意知晓。</li>
     </ul>
-    <p>这些信息用于保存和编辑记录、计算报价金额、生成报价文件及恢复你的使用偏好。当前本地版不会将你的报价单、客户资料或企业资料自动上传到开发者服务器。</p>
-    <p>如你录入客户或其他人的个人信息，请确保有适当权限，并仅录入完成业务所需的内容。</p>
-  </section>
 
-  <section>
-    <h2>3. 图片与设备权限</h2>
-    <p>使用图片相关功能时，应用可通过系统选择器读取你主动选取的图片，用于相应的品牌资料或页面功能。选择图片不代表授权我们访问整个照片库。你可以拒绝或取消选择，并在系统设置中管理应用实际请求的权限；相应功能可能因此不可用。</p>
-    <p>当前本地版不为报价管理功能收集你的精确位置或设备通讯录。</p>
-  </section>
+    <h2>三、我们收集哪些信息</h2>
+    <p><strong>我们不收集任何个人信息。</strong>"收集"指数据离开您的设备并被他人接收或访问。本应用不存在任何此类行为。</p>
+    <p>您在应用内输入和生成的全部数据，仅在设备本地生成、存储与处理，我们及任何第三方均无法访问。</p>
 
-  <section>
-    <h2>4. 导出、保存与分享</h2>
-    <p>应用可在设备上生成 PDF 或 Excel 文件，并在应用临时目录中准备分享副本。只有在你选择保存或分享目的地后，文件才会交给你指定的应用、文件存储服务或接收方。</p>
-    <p>导出内容可能包含客户联系方式、价格及其他业务信息，请在分享前检查。导出后另存的副本由你和相应服务管理，不会随应用内记录的删除而自动删除。</p>
-  </section>
-
-  <section>
-    <h2>5. Apple 内购与系统服务</h2>
-    <p>如果你使用已提供的应用内购买或恢复购买功能，付款和交易由 Apple 的 App Store 系统处理。应用通过 StoreKit 获取产品、交易及权益信息，以判断可用功能。我们不会通过应用获取你的完整银行卡号或 Apple 账号密码。</p>
-    <p>Apple 可能根据你的设备设置处理购买信息、系统诊断和设备备份。设备备份可能包含应用本地数据；本应用没有独立提供已启用的云同步服务，并不表示系统备份被关闭。相关处理请参阅 <a href="https://www.apple.com/legal/privacy/">Apple 隐私政策</a>及设备设置。</p>
-  </section>
-
-  <section>
-    <h2>6. 登录、AI、云功能与反馈</h2>
-    <p>本政策所覆盖的本地版默认不开放账号登录、AI 导入或应用内云服务，不会将报价内容发送至 AI 服务商进行处理。若未来开放这些功能，我们会在启用前说明相关信息类别、处理目的、接收方、保存安排及所需的授权。</p>
-    <p>当前版本的应用内反馈提交采用模拟实现，不会实际向开发者发送反馈或附件；请通过本政策所列邮箱联系我们。若你主动通过邮箱联系，我们会收到你的邮箱地址、消息及你附带的资料，用于回复、处理问题或隐私请求。请避免发送不必要的敏感信息。邮件服务商也会按其自身的服务和隐私规则处理通信信息。</p>
-  </section>
-
-  <section>
-    <h2>7. 广告、追踪与政策网页</h2>
-    <p>当前本地版不集成广告 SDK 或第三方行为统计 SDK，不进行跨应用广告追踪，也不会出售你的个人信息或将其分享用于跨场景定向广告。</p>
-    <p>本政策页面本身不使用分析脚本、广告脚本、外部字体或主动设置的追踪 Cookie。如果通过 GitHub Pages 托管，GitHub 会为提供和保护网页服务处理访问相关信息，包括 IP 地址。此类网页托管处理不同于应用内的本地存储，详见 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 隐私声明</a>。</p>
-  </section>
-
-  <section>
-    <h2>8. 保存期限与删除</h2>
-    <p>报价和业务资料通常保存在你的设备上，直到你删除相应记录、使用“设置 → 清除本地数据”，或通过系统删除应用及其数据。“清除本地数据”会删除本机报价、相关历史、资料库及企业品牌资料，并保留应用偏好；它不会删除你已导出至其他位置的文件、系统备份或 Apple 的交易记录，也不会取消订阅。</p>
-    <p>临时导出文件可能保留至系统清理临时存储或应用数据被删除。系统备份和第三方副本的保存与删除需通过相应服务管理。</p>
-    <p>你直接发给我们的支持通信仅在处理该问题、后续争议或履行适用法律义务所需期间保存；不再需要时予以删除。你可以通过下述邮箱提出删除请求。</p>
-  </section>
-
-  <section>
-    <h2>9. 你的选择与权利</h2>
-    <p>你可以在应用中查看、修改或删除支持编辑的记录，导出报价文件，并管理设备权限及系统备份设置。我们无法远程读取或替你恢复仅保存在你设备上的报价资料；报价文件导出也不等同于完整数据库备份。</p>
-    <p>根据适用法律，你还可能享有访问、更正、删除、限制处理、反对处理、数据可携带、撤回同意及向主管机关投诉等权利。针对我们实际持有的信息，请通过隐私联系邮箱提出请求。我们会按适用法律核实并处理，不因你依法提出请求而给予不公平待遇。</p>
-  </section>
-
-  <section>
-    <h2>10. 信息安全与境外处理</h2>
-    <p>应用使用 iOS 提供的应用存储和系统能力保存本地资料。请保护设备解锁凭据，及时更新系统，并谨慎选择导出文件的接收方。没有任何设备或传输方式能够保证绝对安全。</p>
-    <p>我们当前不将本地报价资料上传至开发者运营的境内或境外服务器。你主动使用的 Apple 服务、邮件服务、GitHub Pages 或分享目的地，可能在你所在国家或地区之外处理信息，具体以相应服务的披露为准。</p>
-  </section>
-
-  <section>
-    <h2>11. 儿童隐私</h2>
-    <p>本应用是一款面向业务报价场景的工具，并非专门面向儿童设计。我们不会有意通过支持通信收集儿童个人信息。如果你认为儿童向我们提供了相关信息，请联系我们，以便核实并采取适当措施。</p>
-  </section>
-
-  <section>
-    <h2>12. 政策更新与联系</h2>
-    <p>当功能或信息处理方式发生变化时，我们会更新本政策并修改生效日期。涉及新增上传、第三方处理或其他重大变化时，我们会按适用法律提供必要的通知，并在需要时取得相应授权。</p>
-    <p>如有隐私问题或权利请求，请联系：</p>
-    <p>开发者：<span class="placeholder">【开发者真实姓名】</span><br>
-      邮箱：<span class="placeholder">【隐私联系邮箱】</span></p>
-  </section>
-
-  <footer>Quote Assistant · AI 报价单助手</footer>
-  </article>
-  <article id="policy-en" lang="en">
-  <aside class="draft" aria-label="Draft publication notes">
-    <h2>Draft template · Not yet effective</h2>
-    <p>Prepared from the local app code as of October 16, 2026. This page is for preview and is not a finalized policy for App Store submission.</p>
-    <ol>
-      <li>Replace all occurrences of <strong>【开发者真实姓名】 (developer’s legal name)</strong>, <strong>【隐私联系邮箱】 (privacy contact email)</strong>, and <strong>【生效日期】 (effective date)</strong> in both languages.</li>
-      <li>Confirm the final product name. This draft uses Quote Assistant (AI 报价单助手).</li>
-      <li>Legal review: confirm identity and address disclosures, applicable laws, processing grounds, user rights, and international processing requirements for the developer’s location and distribution territories. This draft does not establish compliance with any jurisdiction’s full requirements.</li>
-      <li>Check the release build and actual providers. Update this policy before enabling real feedback submissions, sign-in, AI uploads, cloud sync, analytics, or advertising.</li>
-      <li>Remove both draft notice boxes when finalized. You may also remove the noindex meta tag if search engine indexing is desired.</li>
-    </ol>
-    <p>This is a product privacy disclosure draft, not legal advice. Obtain professional legal review for the actual distribution territories before publication.</p>
-  </aside>
-  <header>
-    <h1>Quote Assistant Privacy Policy</h1>
-    <p class="meta">Product: Quote Assistant (AI 报价单助手)<br>
-      Effective date: <span class="placeholder">【生效日期】</span><br>
-      Developer: <span class="placeholder">【开发者真实姓名】</span><br>
-      Privacy contact email: <span class="placeholder">【隐私联系邮箱】</span></p>
-  </header>
-  <section aria-labelledby="summary-en">
-    <h2 id="summary-en">Policy summary</h2>
-    <p>The app helps you create and manage quotations, maintain business records, and export documents. In the current local version, quotations and business records are primarily stored on your device. Registration is not required, AI cloud processing and in-app cloud sync are not enabled, and the app does not integrate advertising or third-party behavioral tracking services. Files you choose to share, Apple purchases, and external services involved in viewing this policy are described below.</p>
-  </section>
-  <section>
-    <h2>1. Scope and responsible developer</h2>
-    <p>This policy explains how <span class="placeholder">【开发者真实姓名】</span> (“we,” “us,” or “our”) handles information when providing Quote Assistant. It covers the current local version and privacy communications sent directly to us. Third-party websites you open, Apple services, and other apps that receive your exports are also subject to their respective privacy policies.</p>
-  </section>
-  <section>
-    <h2>2. Information processed on your device</h2>
-    <p>Depending on the features you use, the app may store the following information that you enter or select:</p>
+    <h2>四、存储在您设备上的数据</h2>
+    <p>以下数据仅保存在您设备上的本地数据库与应用沙盒中：</p>
     <ul>
-      <li>Quotations: numbers, dates, customer details, product or service line items, prices, taxes, discounts, payment terms, notes, statuses, and historical versions.</li>
-      <li>Library records: customer names, companies, contact details, addresses, product information, and reusable quotation terms.</li>
-      <li>Business profile: business name, address, contact details, tax identifiers, and logos, signatures, or other branding images you select.</li>
-      <li>Preferences and feature status: language, theme, haptic feedback, export settings, and purchase entitlement status.</li>
+      <li><strong>报价数据：</strong>报价单号、客户信息、商品明细、金额与折扣/费用/税费调整项、付款条款、状态与客户反馈、历史版本快照、自定义字段等；</li>
+      <li><strong>资料库数据：</strong>您自行录入的客户、商品与条款预设；</li>
+      <li><strong>企业资料：</strong>公司信息、Logo 图片、签署人及签名图片；</li>
+      <li><strong>应用偏好：</strong>界面语言（中文 / 英文 / 泰文）、导出样式、显示与筛选设置等；</li>
+      <li><strong>购买状态记录：</strong>是否已解锁专业版（Pro）的本地标记（详见第七节）。</li>
     </ul>
-    <p>This information is used to save and edit records, calculate quotation amounts, generate documents, and restore your preferences. The current local version does not automatically upload your quotations, customer records, or business profile to developer-operated servers.</p>
-    <p>If you enter personal information about customers or others, ensure that you have appropriate authorization and include only what your business task requires.</p>
-  </section>
-  <section>
-    <h2>3. Images and device permissions</h2>
-    <p>For image-related features, the app can read images you explicitly select using the system picker for the relevant branding or page feature. Selecting an image does not authorize access to your entire photo library. You may decline or cancel selection and manage permissions actually requested by the app in system settings; the corresponding feature may then be unavailable.</p>
-    <p>The current local version does not collect your precise location or device contacts for quotation management.</p>
-  </section>
-  <section>
-    <h2>4. Exporting, saving, and sharing</h2>
-    <p>The app can generate PDF or Excel files on your device and prepare sharing copies in its temporary directory. Files are handed to an app, storage service, or recipient only after you choose a saving or sharing destination.</p>
-    <p>Exports may contain customer contact details, prices, and other business information. Review them before sharing. Copies saved elsewhere are managed by you and the relevant service and are not automatically deleted when you delete records in the app.</p>
-  </section>
-  <section>
-    <h2>5. Apple purchases and system services</h2>
-    <p>If you use available in-app purchase or restore-purchase features, Apple’s App Store handles payment and transactions. The app uses StoreKit product, transaction, and entitlement information to determine available features. We do not obtain your full payment card number or Apple Account password through the app.</p>
-    <p>Apple may process purchase information, system diagnostics, and device backups according to your settings. Backups may contain local app data. The absence of an independently enabled in-app cloud sync service does not mean system backups are disabled. See <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a> and your device settings for details.</p>
-  </section>
-  <section>
-    <h2>6. Sign-in, AI, cloud features, and feedback</h2>
-    <p>The local version covered by this policy does not enable account sign-in, AI import, or in-app cloud services by default and does not send quotation content to AI providers for processing. If these features become available, we will explain the relevant information categories, purposes, recipients, retention arrangements, and required authorization before enabling them.</p>
-    <p>In-app feedback submission in the current version is simulated and does not actually send feedback or attachments to the developer. Please contact us using the email address in this policy. If you email us, we receive your email address, message, and any attachments to respond to questions, address problems, or handle privacy requests. Avoid sending unnecessary sensitive information. Email providers also process communications under their own service and privacy rules.</p>
-  </section>
-  <section>
-    <h2>7. Advertising, tracking, and this policy page</h2>
-    <p>The current local version does not integrate advertising SDKs or third-party behavioral analytics SDKs, track you across apps for advertising, or sell your personal information or share it for cross-context behavioral advertising.</p>
-    <p>This policy page does not use analytics scripts, advertising scripts, external fonts, or tracking cookies that we set. When hosted on GitHub Pages, GitHub processes access-related information, including IP addresses, to provide and secure its hosting service. Website hosting is separate from local storage in the app. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s Privacy Statement</a> for details.</p>
-  </section>
-  <section>
-    <h2>8. Retention and deletion</h2>
-    <p>Quotations and business records generally remain on your device until you delete the relevant records, use Settings → Clear Local Data, or delete the app and its data through the system. Clear Local Data removes quotations, related history, library records, and business branding on that device while keeping app preferences. It does not delete files exported elsewhere, system backups, or Apple transaction records, and it does not cancel subscriptions.</p>
-    <p>Temporary export files may remain until the system clears temporary storage or app data is deleted. Manage backups and third-party copies through the respective services.</p>
-    <p>Support communications you send directly to us are kept only as needed to address the issue, subsequent disputes, or applicable legal obligations, and deleted when no longer needed. You may request deletion using the email address below.</p>
-  </section>
-  <section>
-    <h2>9. Your choices and rights</h2>
-    <p>You can view, update, or delete supported records in the app, export quotation files, and manage device permissions and backup settings. We cannot remotely access or restore quotation records stored only on your device. Exporting a quotation document is not equivalent to backing up the entire database.</p>
-    <p>Depending on applicable law, you may also have rights to access, correct, delete, restrict processing, object to processing, obtain data portability, withdraw consent, or complain to a supervisory authority. For information we actually hold, contact our privacy email. We will verify and handle requests under applicable law and will not treat you unfairly for exercising your legal rights.</p>
-  </section>
-  <section>
-    <h2>10. Security and international processing</h2>
-    <p>The app uses iOS app storage and system capabilities to keep local records. Protect your device credentials, keep your system updated, and choose recipients of exported files carefully. No device or transmission method can guarantee absolute security.</p>
-    <p>We do not currently upload local quotation records to developer-operated servers, domestically or abroad. Apple services, email services, GitHub Pages, or sharing destinations you choose may process information outside your country or region, as described in their respective disclosures.</p>
-  </section>
-  <section>
-    <h2>11. Children’s privacy</h2>
-    <p>The app is a business quotation tool and is not specifically designed for children. We do not knowingly collect children’s personal information through support communications. If you believe a child has provided such information to us, contact us so we can investigate and take appropriate action.</p>
-  </section>
-  <section>
-    <h2>12. Changes and contact</h2>
-    <p>We will update this policy and its effective date when features or information practices change. For new uploads, third-party processing, or other material changes, we will provide notice as required by applicable law and obtain authorization where necessary.</p>
-    <p>For privacy questions or rights requests, contact:</p>
-    <p>Developer: <span class="placeholder">【开发者真实姓名】</span><br>
-      Email: <span class="placeholder">【隐私联系邮箱】</span></p>
-  </section>
-  <footer>Quote Assistant · AI 报价单助手</footer>
-  </article>
-</main>
+    <p>上述数据我们无法访问、无法备份，也无法在您更换或丢失设备时帮您恢复。</p>
+
+    <h2>五、数据的本地处理与使用方式</h2>
+    <p>应用的全部功能均在您的设备本地完成，包括：</p>
+    <ul>
+      <li>报价的创建、编辑、复制、删除与历史版本管理；</li>
+      <li>金额计算（数量、单价、折扣、费用、税费等）；</li>
+      <li>客户、商品、条款资料库的管理；</li>
+      <li>企业资料与品牌信息的维护；</li>
+      <li>PDF / Excel 文件的生成与导出。</li>
+    </ul>
+    <p>本应用当前<strong>未接入任何在线人工智能（AI）服务</strong>，所有处理均在本地完成。若未来版本新增相关能力，我们将先更新本政策并明确告知数据流向，再提供该功能。</p>
+
+    <h2>六、权限使用说明</h2>
+    <ul>
+      <li><strong>照片库（可选）：</strong>仅在您主动为企业资料选择 Logo 或签名图片时，通过 iOS 系统照片选择器（PhotosPicker）访问您选中的图片。我们不会读取您照片库中的其他任何内容，所选图片仅保存在设备本地，不用于任何其他用途；</li>
+      <li><strong>文件导出：</strong>导出 PDF / Excel 时，由您通过系统分享 / 文件面板自行选择保存位置，应用仅写入您明确指定的文件；</li>
+      <li>本应用<strong>不申请</strong>通讯录、定位、麦克风、相机、通讯记录、健康、蓝牙等任何其他敏感权限。</li>
+    </ul>
+
+    <h2>七、应用内购买与交易信息</h2>
+    <p>本应用通过 Apple App Store 提供一次性买断的专业版（Pro）升级：</p>
+    <ul>
+      <li>全部支付流程由 Apple 处理，我们不接触、不存储您的 Apple ID、支付账户或银行卡等任何支付信息；</li>
+      <li>交易完成后，应用会在<strong>设备本地</strong>记录购买状态（是否已解锁 Pro），仅用于功能判定与"恢复购买"。该记录不含个人身份信息，也不会上传至任何服务器；</li>
+      <li>"恢复购买"由 Apple 通过您的 Apple ID 完成，相关数据流向遵循 <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple 隐私政策</a>；</li>
+      <li>退款、取消订阅类咨询请直接联系 Apple 客服。</li>
+    </ul>
+
+    <h2>八、数据存储与安全保障</h2>
+    <ul>
+      <li>您的数据存储于应用沙盒内的本地数据库，受 iOS 沙盒机制保护，其他应用无法访问；</li>
+      <li>我们未部署任何与您数据相关的服务器，因此<strong>不存在服务端泄露风险</strong>；</li>
+      <li>请注意：若您开启了 iCloud 设备备份（整机备份），应用数据可能随设备备份存入您的 iCloud 账户。该过程由 Apple 依据其隐私政策执行，我们无法访问、也无法控制；</li>
+      <li>由于数据仅存于本地，我们建议您定期通过导出 PDF / Excel 的方式自行备份重要报价数据。</li>
+    </ul>
+
+    <h2>九、第三方服务与 SDK</h2>
+    <p>本应用不接入除 Apple 系统服务（App Store / StoreKit 应用内购买、系统照片选择器、系统分享与文件面板）以外的任何第三方服务，<strong>不集成任何第三方 SDK</strong>（无统计、无广告、无推送、无社交分享组件）。</p>
+
+    <h2>十、跟踪、广告与数据分析</h2>
+    <ul>
+      <li>本应用<strong>不含任何广告</strong>，不参与任何广告网络；</li>
+      <li>本应用<strong>不进行跨应用跟踪</strong>，不采集广告标识符（IDFA），因此无需向您申请 App Tracking Transparency（跟踪）授权；</li>
+      <li>本应用<strong>不进行用户行为分析与数据分析</strong>，不记录、不上报任何使用日志。</li>
+    </ul>
+
+    <h2>十一、数据的保留、删除与导出</h2>
+    <ul>
+      <li><strong>保留：</strong>数据始终保留在您的设备上，直至您主动删除。我们不对您的数据设定任何保留期限；</li>
+      <li><strong>删除：</strong>您可随时在应用内删除单条报价、客户、商品或条款数据；删除报价或卸载应用后，数据不可恢复；</li>
+      <li><strong>卸载即清除：</strong>卸载本应用将永久删除存储在设备上的全部数据，其中也包括我们无法帮您找回的数据——因为我们从未拥有它们；</li>
+      <li><strong>导出：</strong>您可随时通过应用内的导出功能，以 PDF / Excel 形式带走您的数据。</li>
+    </ul>
+
+    <h2>十二、您的权利</h2>
+    <p>由于您的数据完全由您掌控，您可以随时自行行使以下权利，无需向我们申请：</p>
+    <ul>
+      <li><strong>访问与更正：</strong>在应用内随时查看和修改您的全部数据；</li>
+      <li><strong>导出（数据可携带）：</strong>通过导出功能获取 PDF / Excel 副本；</li>
+      <li><strong>删除：</strong>在应用内删除任意数据，或卸载应用一次性删除全部数据。</li>
+    </ul>
+
+    <h2>十三、未成年人</h2>
+    <p>本应用并非专门面向未成年人设计的产品，也不会故意收集未成年人的个人信息。由于本应用不收集任何个人信息，因此不存在收集未成年人个人信息的情形。若您是未成年人的监护人，发现任何问题，欢迎通过第十六节的方式与我们联系。</p>
+
+    <h2>十四、数据出境与国际用户</h2>
+    <p>您的数据从不离开您的设备，因此<strong>不存在数据跨境传输</strong>。无论您身处中国或其他国家 / 地区，数据处理方式完全一致：本地存储、本地处理。</p>
+
+    <h2>十五、政策的更新与变更</h2>
+    <p>如本政策发生实质性变更，我们将通过应用更新说明或 App Store 产品页面发布修订版本，并在新版政策中标注生效日期。建议您在应用更新后查阅最新版本。继续使用更新后的应用，视为您知悉并接受修订后的政策。</p>
+
+    <h2>十六、联系我们</h2>
+    <p>如您对本政策或本应用的隐私保护有任何疑问、意见或建议，请通过以下方式联系我们：</p>
+    <ul>
+      <li>开发者：董宇卓</li>
+      <li>电子邮箱：{{CONTACT_EMAIL}}</li>
+    </ul>
+    <p>我们会在合理期限内回复。</p>
+  </div>
+
+  <!-- ==================== English ==================== -->
+  <div class="lang" id="content-en">
+    <h1>Privacy Policy</h1>
+    <p class="meta">App Name: Quote Assistant<br>Developer: 董宇卓<br>Version: v1.0 &nbsp;·&nbsp; Effective Date: {{EFFECTIVE_DATE}}</p>
+
+    <div class="summary">
+      <strong>Our core promise:</strong> This app has no account registration, no sign-in, and no cloud servers. Everything you create is stored and processed <strong>on your own device only</strong>. We do not upload, collect, or track any of your data.
+    </div>
+
+    <h2>1. Introduction</h2>
+    <p>Quote Assistant is a local-first quotation tool that helps you create, manage, and export quotes (PDF / Excel) on your device. We take your personal information and privacy seriously.</p>
+    <p>This policy applies to all features of the Quote Assistant iOS app. It is written in the spirit of applicable data protection laws (such as the GDPR, China's PIPL, and Thailand's PDPA). Because this app collects no personal information, all data processing is confined to your device, minimizing any privacy risk.</p>
+    <p>Please read this policy carefully, especially the bolded parts. By using this app, you acknowledge that you have read and understood it.</p>
+
+    <h2>2. Key Commitments</h2>
+    <ul>
+      <li><strong>No account system:</strong> no registration, no sign-in, no third-party login;</li>
+      <li><strong>No cloud servers:</strong> we operate no servers handling your data — no cloud sync, no cloud backup;</li>
+      <li><strong>No data uploads:</strong> your quotes, customers, products, business profile, images, and settings never leave your device (the only exception is the Apple-handled in-app purchase flow described in Section 7);</li>
+      <li><strong>No tracking:</strong> no ads, no cross-app tracking, no device fingerprinting;</li>
+      <li><strong>No analytics SDKs:</strong> we cannot see how you use this app, and we have no intention to.</li>
+    </ul>
+
+    <h2>3. Information We Collect</h2>
+    <p><strong>We collect no personal information.</strong> "Collect" means data leaving your device and being received or accessed by someone else. This app performs no such action.</p>
+    <p>All data you enter and generate within the app is created, stored, and processed locally on your device. Neither we nor any third party can access it.</p>
+
+    <h2>4. Data Stored on Your Device</h2>
+    <p>The following data is stored only in the local database and app sandbox on your device:</p>
+    <ul>
+      <li><strong>Quote data:</strong> quote numbers, customer details, line items, amounts and adjustments (discounts, fees, taxes), payment terms, status and customer feedback, version history snapshots, custom fields, etc.;</li>
+      <li><strong>Library data:</strong> customers, products, and terms presets you enter yourself;</li>
+      <li><strong>Business profile:</strong> company information, logo image, signatory and signature images;</li>
+      <li><strong>App preferences:</strong> interface language (Chinese / English / Thai), export styles, display and filter settings;</li>
+      <li><strong>Purchase status record:</strong> a local flag indicating whether Pro is unlocked (see Section 7).</li>
+    </ul>
+    <p>We cannot access this data, cannot back it up, and cannot restore it if you lose or replace your device.</p>
+
+    <h2>5. Local Processing and How Data Is Used</h2>
+    <p>All app features run entirely on your device, including:</p>
+    <ul>
+      <li>Creating, editing, duplicating, deleting quotes and managing version history;</li>
+      <li>Amount calculations (quantity, unit price, discounts, fees, taxes);</li>
+      <li>Managing your customer, product, and terms libraries;</li>
+      <li>Maintaining your business profile and branding;</li>
+      <li>Generating and exporting PDF / Excel files.</li>
+    </ul>
+    <p>This app currently <strong>does not connect to any online AI services</strong>; all processing happens locally. If a future version adds such capabilities, we will update this policy and clearly explain the data flow before shipping the feature.</p>
+
+    <h2>6. Permissions</h2>
+    <ul>
+      <li><strong>Photo Library (optional):</strong> the app accesses photos only through the iOS system photo picker (PhotosPicker), and only when you actively choose a logo or signature image for your business profile. We never read any other content in your photo library; selected images stay on your device and are used for nothing else;</li>
+      <li><strong>File export:</strong> when exporting PDF / Excel files, you choose the destination via the system share / Files panel; the app writes only to the file you explicitly choose;</li>
+      <li>The app <strong>does not request</strong> any other sensitive permissions such as contacts, location, microphone, camera, call logs, health, or Bluetooth.</li>
+    </ul>
+
+    <h2>7. In-App Purchases and Transaction Information</h2>
+    <p>This app offers a one-time Pro upgrade through the Apple App Store:</p>
+    <ul>
+      <li>The entire payment process is handled by Apple; we never touch or store your Apple ID, payment account, or card details;</li>
+      <li>After a transaction, the app records the purchase state (whether Pro is unlocked) <strong>locally on your device</strong>, solely for feature gating and "Restore Purchases". This record contains no personal identity information and is never uploaded to any server;</li>
+      <li>"Restore Purchases" is performed by Apple through your Apple ID, subject to <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>;</li>
+      <li>For refunds, please contact Apple Support directly.</li>
+    </ul>
+
+    <h2>8. Data Storage and Security</h2>
+    <ul>
+      <li>Your data is stored in the app sandbox's local database, protected by the iOS sandbox mechanism and inaccessible to other apps;</li>
+      <li>We operate no servers handling your data, so <strong>there is no server-side breach surface</strong>;</li>
+      <li>Please note: if you enable iCloud device backup, app data may be backed up to your iCloud account as part of a full-device backup. That process is performed by Apple under its own privacy policy; we cannot access or control it;</li>
+      <li>Because data lives only on your device, we recommend regularly exporting important quotes as PDF / Excel for your own backup.</li>
+    </ul>
+
+    <h2>9. Third-Party Services and SDKs</h2>
+    <p>Apart from Apple system services (App Store / StoreKit in-app purchases, the system photo picker, and the system share / Files panels), this app integrates <strong>no third-party services and no third-party SDKs</strong> — no analytics, no ads, no push services, no social sharing components.</p>
+
+    <h2>10. Tracking, Advertising, and Analytics</h2>
+    <ul>
+      <li>This app <strong>contains no advertising</strong> and participates in no ad networks;</li>
+      <li>This app <strong>does not track you across apps</strong> and does not collect the advertising identifier (IDFA), so App Tracking Transparency consent is not required;</li>
+      <li>This app <strong>performs no behavioral analytics</strong> and records or reports no usage logs.</li>
+    </ul>
+
+    <h2>11. Data Retention, Deletion, and Export</h2>
+    <ul>
+      <li><strong>Retention:</strong> your data stays on your device until you choose to delete it; we impose no retention period;</li>
+      <li><strong>Deletion:</strong> you can delete any quote, customer, product, or terms entry at any time; deleted data and uninstalled apps cannot be restored;</li>
+      <li><strong>Uninstall = wipe:</strong> uninstalling the app permanently deletes all data stored on your device — data we cannot recover for you, because we never had it;</li>
+      <li><strong>Export:</strong> you can take your data with you at any time via the in-app PDF / Excel export.</li>
+    </ul>
+
+    <h2>12. Your Rights</h2>
+    <p>Because your data is entirely under your control, you can exercise the following rights yourself at any time, without applying to us:</p>
+    <ul>
+      <li><strong>Access and correction:</strong> view and modify all of your data in the app at any time;</li>
+      <li><strong>Export (portability):</strong> obtain PDF / Excel copies via the export feature;</li>
+      <li><strong>Erasure:</strong> delete any data in the app, or uninstall the app to delete everything at once.</li>
+    </ul>
+
+    <h2>13. Children</h2>
+    <p>This app is not directed at children and does not knowingly collect any personal information from anyone, including minors. Since the app collects no personal information at all, no children's data is collected. If you are a parent or guardian and believe there is an issue, please contact us as described in Section 16.</p>
+
+    <h2>14. International Users and Cross-Border Data</h2>
+    <p>Your data never leaves your device, so <strong>no cross-border data transfer occurs</strong>. Wherever you are in the world, the data handling is identical: stored and processed locally.</p>
+
+    <h2>15. Changes to This Policy</h2>
+    <p>If this policy changes materially, we will publish the revised version through app update notes or our App Store product page, with a new effective date. We recommend reviewing the latest version after each app update. Continued use of the updated app constitutes acceptance of the revised policy.</p>
+
+    <h2>16. Contact Us</h2>
+    <p>If you have any questions, comments, or concerns about this policy or the app's privacy practices, contact us at:</p>
+    <ul>
+      <li>Developer: 董宇卓</li>
+      <li>Email: {{CONTACT_EMAIL}}</li>
+    </ul>
+    <p>We will respond within a reasonable time.</p>
+  </div>
+
+  <!-- ==================== ไทย ==================== -->
+  <div class="lang" id="content-th">
+    <h1>นโยบายความเป็นส่วนตัว</h1>
+    <p class="meta">ชื่อแอปพลิเคชัน: Quote Assistant (ผู้ช่วยจัดทำใบเสนอราคา)<br>ผู้พัฒนา: 董宇卓<br>เวอร์ชัน: v1.0 &nbsp;·&nbsp; วันที่มีผล: {{EFFECTIVE_DATE}}</p>
+
+    <div class="summary">
+      <strong>คำมั่นหลักของเรา:</strong> แอปพลิเคชันนี้ไม่มีระบบสมัครสมาชิก ไม่มีการล็อกอิน และไม่เชื่อมต่อกับเซิร์ฟเวอร์ภายนอกใด ๆ ข้อมูลทั้งหมดที่คุณสร้างจะถูกจัดเก็บและประมวลผล<strong>บนอุปกรณ์ของคุณเท่านั้น</strong> เราไม่อัปโหลด ไม่เก็บรวบรวม และไม่ติดตามข้อมูลของคุณ
+    </div>
+
+    <h2>1. บทนำ</h2>
+    <p>Quote Assistant เป็นเครื่องมือจัดทำใบเสนอราคาแบบ Local-first ที่ช่วยให้คุณสร้าง จัดการ และส่งออกใบเสนอราคา (PDF / Excel) บนอุปกรณ์ของคุณ เราให้ความสำคัญกับข้อมูลส่วนบุคคลและความเป็นส่วนตัวของคุณอย่างยิ่ง</p>
+    <p>นโยบายนี้ครอบคลุมคุณสมบัติทั้งหมดของแอปพลิเคชัน Quote Assistant บน iOS โดยจัดทำขึ้นตามหลักการของกฎหมายคุ้มครองข้อมูลส่วนบุคคลที่บังคับใช้ (เช่น PDPA ของประเทศไทย และกฎหมายที่คล้ายคลึงกัน) เนื่องจากแอปพลิเคชันนี้ไม่เก็บรวบรวมข้อมูลส่วนบุคคลใด ๆ การประมวลผลข้อมูลทั้งหมดจึงถูกจำกัดอยู่บนอุปกรณ์ของคุณ ความเสี่ยงด้านความเป็นส่วนตัวจึงน้อยที่สุด</p>
+    <p>โปรดอ่านนโยบายนี้โดยละเอียด โดยเฉพาะข้อความที่เป็นตัวหนา การใช้งานแอปพลิเคชันถือว่าคุณได้อ่านและเข้าใจนโยบายนี้แล้ว</p>
+
+    <h2>2. คำมั่นสำคัญ</h2>
+    <ul>
+      <li><strong>ไม่มีระบบบัญชีผู้ใช้:</strong> ไม่มีการสมัครสมาชิก ไม่มีการล็อกอิน และไม่มีการล็อกอินผ่านบริการของบุคคลที่สาม;</li>
+      <li><strong>ไม่มีเซิร์ฟเวอร์ภายนอก:</strong> เราไม่มีเซิร์ฟเวอร์ที่เกี่ยวข้องกับข้อมูลของคุณ ไม่มีการซิงก์ผ่านคลาวด์ และไม่มีการสำรองข้อมูลบนคลาวด์;</li>
+      <li><strong>ไม่อัปโหลดข้อมูลใด ๆ:</strong> ใบเสนอราคา ลูกค้า สินค้า ข้อมูลบริษัท รูปภาพ และการตั้งค่าของคุณ จะไม่ออกจากอุปกรณ์ของคุณ (ยกเว้นแต่เพียงกรณีเดียวตามข้อ 7 คือขั้นตอนการซื้อในแอปซึ่งดำเนินการโดย Apple);</li>
+      <li><strong>ไม่มีการติดตาม:</strong> ไม่มีโฆษณา ไม่มีการติดตามข้ามแอปพลิเคชัน และไม่มีการระบุอุปกรณ์;</li>
+      <li><strong>ไม่ใช้ SDK เก็บสถิติ:</strong> เราไม่สามารถทราบว่าคุณใช้งานแอปอย่างไร และเราก็ไม่มีความต้องการจะทราบ</li>
+    </ul>
+
+    <h2>3. ข้อมูลที่เราเก็บรวบรวม</h2>
+    <p><strong>เราไม่เก็บรวบรวมข้อมูลส่วนบุคคลใด ๆ</strong> คำว่า "เก็บรวบรวม" หมายถึงข้อมูลที่ออกจากอุปกรณ์ของคุณและถูกรับหรือเข้าถึงโดยบุคคลอื่น แอปพลิเคชันนี้ไม่มีพฤติกรรมเช่นนั้นเลย</p>
+    <p>ข้อมูลทั้งหมดที่คุณกรอกและสร้างขึ้นในแอป จะถูกสร้าง จัดเก็บ และประมวลผลบนอุปกรณ์ของคุณเท่านั้น ทั้งเราและบุคคลที่สามไม่สามารถเข้าถึงได้</p>
+
+    <h2>4. ข้อมูลที่จัดเก็บบนอุปกรณ์ของคุณ</h2>
+    <p>ข้อมูลต่อไปนี้ถูกจัดเก็บเฉพาะในฐานข้อมูลภายในเครื่องและพื้นที่แซนด์บ็อกซ์ของแอปเท่านั้น:</p>
+    <ul>
+      <li><strong>ข้อมูลใบเสนอราคา:</strong> เลขที่ใบเสนอราคา ข้อมูลลูกค้า รายการสินค้า จำนวนเงินและส่วนปรับ (ส่วนลด ค่าธรรมเนียม ภาษี) เงื่อนไขการชำระเงิน สถานะและผลตอบรับจากลูกค้า ประวัติเวอร์ชัน และฟิลด์กำหนดเองต่าง ๆ;</li>
+      <li><strong>ข้อมูลคลัง:</strong> ลูกค้า สินค้า และเงื่อนไขที่คุณบันทึกไว้เอง;</li>
+      <li><strong>ข้อมูลบริษัท:</strong> ข้อมูลบริษัท โลโก้ ชื่อผู้ลงนาม และรูปลายเซ็น;</li>
+      <li><strong>การตั้งค่าแอป:</strong> ภาษาของอินเทอร์เฟซ (จีน / อังกฤษ / ไทย) รูปแบบการส่งออก การแสดงผลและการกรองข้อมูล;</li>
+      <li><strong>สถานะการซื้อ:</strong> สถานะในเครื่องว่าปลดล็อก Pro แล้วหรือไม่ (ดูข้อ 7)</li>
+    </ul>
+    <p>ข้อมูลข้างต้นเราไม่สามารถเข้าถึง ไม่สามารถสำรอง และไม่สามารถกู้คืนให้คุณได้หากคุณเปลี่ยนหรือสูญหายอุปกรณ์</p>
+
+    <h2>5. การประมวลผลในเครื่องและการใช้ข้อมูล</h2>
+    <p>คุณสมบัติทั้งหมดของแอปทำงานบนอุปกรณ์ของคุณทั้งหมด ได้แก่:</p>
+    <ul>
+      <li>การสร้าง แก้ไข คัดลอก ลบใบเสนอราคา และการจัดการประวัติเวอร์ชัน;</li>
+      <li>การคำนวณจำนวนเงิน (จำนวน ราคาต่อหน่วย ส่วนลด ค่าธรรมเนียม ภาษี);</li>
+      <li>การจัดการคลังลูกค้า สินค้า และเงื่อนไข;</li>
+      <li>การจัดการข้อมูลบริษัทและแบรนด์;</li>
+      <li>การสร้างและส่งออกไฟล์ PDF / Excel</li>
+    </ul>
+    <p>ปัจจุบันแอปพลิเคชันนี้<strong>ไม่ได้เชื่อมต่อกับบริการ AI ออนไลน์ใด ๆ</strong> การประมวลผลทั้งหมดเกิดขึ้นในเครื่อง หากในเวอร์ชันอนาคตมีความสามารถเช่นนั้น เราจะปรับปรุงนโยบายนี้และชี้แจงการไหลของข้อมูลก่อนเปิดใช้ฟีเจอร์นั้น</p>
+
+    <h2>6. สิทธิ์การเข้าถึงระบบ</h2>
+    <ul>
+      <li><strong>คลังรูปภาพ (ไม่บังคับ):</strong> แอปจะเข้าถึงรูปภาพผ่านตัวเลือกรูปภาพของระบบ iOS (PhotosPicker) เฉพาะเมื่อคุณเลือกโลโก้หรือรูปลายเซ็นสำหรับข้อมูลบริษัทด้วยตนเองเท่านั้น เราไม่อ่านเนื้อหาอื่นใดในคลังรูปภาพของคุณ รูปที่เลือกถูกเก็บไว้บนอุปกรณ์ของคุณเท่านั้นและไม่นำไปใช้ประโยชน์อื่น;</li>
+      <li><strong>การส่งออกไฟล์:</strong> เมื่อส่งออก PDF / Excel คุณเป็นผู้เลือกตำแหน่งบันทึกผ่านแผงแชร์ / ไฟล์ของระบบ แอปเขียนเฉพาะไฟล์ที่คุณระบุเท่านั้น;</li>
+      <li>แอป<strong>ไม่ขอสิทธิ์</strong>ที่ละเอียดอ่อนอื่น ๆ เช่น รายชื่อผู้ติดต่อ ตำแหน่งที่ตั้ง ไมโครโฟน กล้อง ประวัติการโทร ข้อมูลสุขภาพ หรือบลูทูธ</li>
+    </ul>
+
+    <h2>7. การซื้อภายในแอปพลิเคชันและข้อมูลการทำธุรกรรม</h2>
+    <p>แอปนี้มีการอัปเกรดเป็น Pro แบบชำระครั้งเดียวผ่าน Apple App Store:</p>
+    <ul>
+      <li>ขั้นตอนการชำระเงินทั้งหมดดำเนินการโดย Apple เราไม่สัมผัสและไม่จัดเก็บ Apple ID บัญชีการชำระเงิน หรือข้อมูลบัตรของคุณ;</li>
+      <li>หลังธุรกรรมเสร็จสิ้น แอปจะบันทึกสถานะการซื้อ (ปลดล็อก Pro หรือไม่) <strong>ไว้ในอุปกรณ์ของคุณเท่านั้น</strong> เพื่อใช้กำหนดคุณสมบัติและ "กู้คืนการซื้อ" เท่านั้น ข้อมูลนี้ไม่มีข้อมูลระบุตัวตนส่วนบุคคลและจะไม่ถูกอัปโหลดไปยังเซิร์ฟเวอร์ใด ๆ;</li>
+      <li>"กู้คืนการซื้อ" ดำเนินการโดย Apple ผ่าน Apple ID ของคุณ โดยอยู่ภายใต้<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">นโยบายความเป็นส่วนตัวของ Apple</a>;</li>
+      <li>สำหรับการขอคืนเงิน โปรดติดต่อฝ่ายสนับสนุนของ Apple โดยตรง</li>
+    </ul>
+
+    <h2>8. การจัดเก็บและความปลอดภัยของข้อมูล</h2>
+    <ul>
+      <li>ข้อมูลของคุณถูกจัดเก็บในฐานข้อมูลภายในแซนด์บ็อกซ์ของแอป ซึ่งได้รับการปกป้องโดยกลไกแซนด์บ็อกซ์ของ iOS แอปอื่นไม่สามารถเข้าถึงได้;</li>
+      <li>เราไม่มีเซิร์ฟเวอร์ที่เกี่ยวข้องกับข้อมูลของคุณ จึง<strong>ไม่มีความเสี่ยงการรั่วไหลจากฝั่งเซิร์ฟเวอร์</strong>;</li>
+      <li>โปรดทราบ: หากคุณเปิดใช้การสำรองข้อมูลอุปกรณ์ผ่าน iCloud ข้อมูลของแอปอาจถูกสำรองไปยังบัญชี iCloud ของคุณเป็นส่วนหนึ่งของการสำรองทั้งเครื่อง กระบวนการนี้ดำเนินการโดย Apple ตามนโยบายความเป็นส่วนตัวของตน เราไม่สามารถเข้าถึงหรือควบคุมได้;</li>
+      <li>เนื่องจากข้อมูลอยู่เฉพาะบนอุปกรณ์ของคุณ เราแนะนำให้คุณส่งออกใบเสนอราคาสำคัญ ๆ เป็น PDF / Excel เป็นประจำเพื่อสำรองข้อมูลด้วยตนเอง</li>
+    </ul>
+
+    <h2>9. บริการของบุคคลที่สามและ SDK</h2>
+    <p>นอกเหนือจากบริการระบบของ Apple (App Store / StoreKit สำหรับการซื้อในแอป ตัวเลือกรูปภาพของระบบ และแผงแชร์ / ไฟล์ของระบบ) แอปพลิเคชันนี้<strong>ไม่เชื่อมต่อกับบริการของบุคคลที่สามใด ๆ และไม่รวม SDK ของบุคคลที่สาม</strong> ไม่มีเครื่องมือสถิติ ไม่มีโฆษณา ไม่มีการแจ้งเตือนแบบพุช และไม่มีคอมโพเนนต์แชร์ผ่านโซเชียล</p>
+
+    <h2>10. การติดตาม โฆษณา และการวิเคราะห์ข้อมูล</h2>
+    <ul>
+      <li>แอปนี้<strong>ไม่มีโฆษณา</strong>และไม่เข้าร่วมเครือข่ายโฆษณาใด ๆ;</li>
+      <li>แอปนี้<strong>ไม่ติดตามคุณข้ามแอปพลิเคชัน</strong>และไม่เก็บรหัสโฆษณา (IDFA) จึงไม่จำเป็นต้องขอความยินยอม App Tracking Transparency;</li>
+      <li>แอปนี้<strong>ไม่วิเคราะห์พฤติกรรมผู้ใช้</strong>และไม่บันทึกหรือส่งบันทึกการใช้งานใด ๆ</li>
+    </ul>
+
+    <h2>11. การเก็บรักษา การลบ และการส่งออกข้อมูล</h2>
+    <ul>
+      <li><strong>การเก็บรักษา:</strong> ข้อมูลของคุณอยู่บนอุปกรณ์จนกว่าคุณจะเลือกลบเอง เราไม่กำหนดระยะเวลาเก็บรักษาใด ๆ;</li>
+      <li><strong>การลบ:</strong> คุณสามารถลบใบเสนอราคา ลูกค้า สินค้า หรือเงื่อนไขรายการใดก็ได้ตลอดเวลา ข้อมูลที่ลบแล้วและแอปที่ถอนการติดตั้งแล้วไม่สามารถกู้คืนได้;</li>
+      <li><strong>ถอนการติดตั้ง = ลบทั้งหมด:</strong> การถอนการติดตั้งแอปจะลบข้อมูลทั้งหมดบนอุปกรณ์ของคุณอย่างถาวร ซึ่งรวมถึงข้อมูลที่เราไม่สามารถกู้คืนให้คุณได้ เพราะเราไม่เคยมีข้อมูลนั้น;</li>
+      <li><strong>การส่งออก:</strong> คุณสามารถนำข้อมูลของคุณออกได้ทุกเมื่อผ่านการส่งออก PDF / Excel ภายในแอป</li>
+    </ul>
+
+    <h2>12. สิทธิของคุณ</h2>
+    <p>เนื่องจากข้อมูลของคุณอยู่ภายใต้การควบคุมของคุณทั้งหมด คุณจึงสามารถใช้สิทธิต่อไปนี้ได้ด้วยตนเองทุกเมื่อ โดยไม่ต้องขออนุญาตจากเรา:</p>
+    <ul>
+      <li><strong>เข้าถึงและแก้ไข:</strong> ดูและแก้ไขข้อมูลทั้งหมดของคุณในแอปได้ทุกเมื่อ;</li>
+      <li><strong>ส่งออกข้อมูล:</strong> รับสำเนา PDF / Excel ผ่านฟังก์ชันส่งออก;</li>
+      <li><strong>ลบข้อมูล:</strong> ลบข้อมูลใดก็ได้ในแอป หรือถอนการติดตั้งแอปเพื่อลบทุกอย่างในครั้งเดียว</li>
+    </ul>
+
+    <h2>13. เด็กและเยาวชน</h2>
+    <p>แอปพลิเคชันนี้ไม่ได้ถูกออกแบบมาสำหรับเด็กโดยเฉพาะ และไม่ได้ตั้งใจเก็บรวบรวมข้อมูลส่วนบุคคลจากผู้ใดรวมถึงเยาวชน เนื่องจากแอปไม่เก็บรวบรวมข้อมูลส่วนบุคคลเลย จึงไม่มีการเก็บข้อมูลของเยาวชน หากคุณเป็นผู้ปกครองและพบปัญหาใด โปรดติดต่อเราตามข้อ 16</p>
+
+    <h2>14. ผู้ใช้ต่างประเทศและการโอนข้อมูลข้ามพรมแดน</h2>
+    <p>ข้อมูลของคุณไม่เคยออกจากอุปกรณ์ของคุณ จึง<strong>ไม่มีการโอนย้ายข้อมูลข้ามพรมแดน</strong> ไม่ว่าคุณจะอยู่ที่ใดในโลก วิธีการจัดการข้อมูลก็เหมือนกันทุกประการ คือจัดเก็บและประมวลผลในเครื่อง</p>
+
+    <h2>15. การปรับปรุงนโยบาย</h2>
+    <p>หากนโยบายนี้มีการเปลี่ยนแปลงที่สำคัญ เราจะเผยแพร่เวอร์ชันที่แก้ไขผ่านบันทึกการอัปเดตแอปหรือหน้าผลิตภัณฑ์บน App Store พร้อมระบุวันที่มีผลใหม่ เราแนะนำให้คุณตรวจสอบเวอร์ชันล่าสุดหลังการอัปเดตแอปทุกครั้ง การใช้งานแอปต่อไปถือว่าคุณยอมรับนโยบายฉบับแก้ไขแล้ว</p>
+
+    <h2>16. ติดต่อเรา</h2>
+    <p>หากคุณมีคำถาม ความคิดเห็น หรือข้อกังวลใด ๆ เกี่ยวกับนโยบายนี้หรือแนวปฏิบัติด้านความเป็นส่วนตัวของแอป โปรดติดต่อเราที่:</p>
+    <ul>
+      <li>ผู้พัฒนา: 董宇卓</li>
+      <li>อีเมล: {{CONTACT_EMAIL}}</li>
+    </ul>
+    <p>เราจะตอบกลับภายในระยะเวลาที่เหมาะสม</p>
+  </div>
+
+  <div class="footer">Quote Assistant · Privacy Policy / 隐私政策 / นโยบายความเป็นส่วนตัว</div>
+</div>
+
 <script>
-  // Page-only language selection: no cookies, storage, or network requests.
-  (() => {
-    const links = Array.from(document.querySelectorAll('.languages a'));
-    const policies = { zh: document.getElementById('policy-zh'), en: document.getElementById('policy-en') };
-    function showLanguage() {
-      const requested = location.hash.replace(/^#(?:policy-)?/, '');
-      const language = requested === 'zh' || requested === 'en'
-        ? requested
-        : (/^zh(?:-|$)/i.test(navigator.language || 'en') ? 'zh' : 'en');
-      Object.entries(policies).forEach(([key, article]) => { article.hidden = key !== language; });
-      links.forEach(link => {
-        if (link.dataset.language === language) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
-      });
-      document.documentElement.lang = language === 'zh' ? 'zh-Hans' : 'en';
-      document.title = language === 'zh' ? 'Quote Assistant 隐私政策' : 'Quote Assistant Privacy Policy';
+  var LANGS = ['zh', 'en', 'th'];
+  var MAP = { zh: 'zh-CN', en: 'en', th: 'th' };
+  function setLang(l) {
+    if (LANGS.indexOf(l) === -1) return;
+    document.querySelectorAll('.lang').forEach(function (el) { el.style.display = 'none'; });
+    document.getElementById('content-' + l).style.display = 'block';
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === l);
+    });
+    document.documentElement.lang = MAP[l];
+    document.title = (l === 'zh' ? '报价助手 · 隐私政策' : l === 'th' ? 'Quote Assistant · นโยบายความเป็นส่วนตัว' : 'Quote Assistant · Privacy Policy');
+    try { localStorage.setItem('qa-privacy-lang', l); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('qa-privacy-lang'); } catch (e) {}
+    if (LANGS.indexOf(saved) === -1) {
+      var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      saved = nav.indexOf('zh') === 0 ? 'zh' : (nav.indexOf('th') === 0 ? 'th' : 'en');
     }
-    window.addEventListener('hashchange', showLanguage);
-    showLanguage();
+    setLang(saved);
   })();
 </script>
 </body>
